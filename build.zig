@@ -38,7 +38,7 @@ fn create_libusb(
         target.result.os.tag == .openbsd;
 
     const options = .{
-        .name = "usb",
+        .name = "usb-1.0",
         .target = target,
         .optimize = optimize,
         .link_libc = true,
