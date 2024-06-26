@@ -123,7 +123,7 @@ fn create_libusb(
             .PACKAGE_STRING = "libusb-1.0 1.0.26",
             .PACKAGE_TARNAME = "libusb-1.0",
             .PACKAGE_URL = "http://libusb.info",
-            .PACKAGE_VERSION = "1.0.26",
+            .PACKAGE_VERSION = "1.0.26-zigify",
             .PLATFORM_POSIX = define_from_bool(is_posix),
             .PLATFORM_WINDOWS = define_from_bool(target.result.os.tag == .windows),
             .STDC_HEADERS = 1,
