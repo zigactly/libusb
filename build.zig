@@ -1,4 +1,5 @@
 const std = @import("std");
+const statically = @import("statically");
 const Build = std.Build;
 
 fn project_root(comptime path: []const u8) []const u8 {
@@ -13,6 +14,8 @@ fn define_from_bool(val: bool) ?u1 {
 pub fn build(b: *Build) void {
     const optimize = b.standardOptimizeOption(.{});
     const target = b.standardTargetOptions(.{});
+    _ = statically.option(b);
+    statically.log("libusb");
 
     const libusb = create_libusb(b, target, optimize);
     b.installArtifact(libusb);
@@ -34,12 +37,15 @@ fn create_libusb(
         target.result.os.tag == .linux or
         target.result.os.tag == .openbsd;
 
-    const lib = b.addStaticLibrary(.{
+    const options = .{
         .name = "usb",
         .target = target,
         .optimize = optimize,
         .link_libc = true,
-    });
+    };
+
+    const lib = statically.library(b, options, options);
+
     lib.addCSourceFiles(.{ .files = src });
 
     if (is_posix)

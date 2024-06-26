@@ -1,11 +1,18 @@
 .{
     .name = "libusb",
     .version = "1.0.26",
+    .dependencies = .{
+        .statically = .{
+            .url = "https://github.com/zigactly/statically/archive/94c1dacb02ea75164c1bbb1420b1a66db88fdb8e.tar.gz",
+            .hash = "1220be99d9c1e095835a8cb83cf18a2078fa2102d834eb7a4c578be6f157caf71054"
+        },
+    },
     .paths = .{
         "README",
         "COPYING",
         "build.zig",
         "build.zig.zon",
         "libusb",
+        "config.h.in",
     },
 }
